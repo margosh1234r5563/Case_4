@@ -1,16 +1,14 @@
 import ru_local as ru
 
 print(ru.CREATURES)
-number_creatures_list = []
 amount_orders_list = []
 
 cost_basilisk = 200 / 2
 cost_striga = 3000 * 6.6
 cost_creature = [50, 50, 150, cost_basilisk, cost_striga]
 
-for n in range(1, 6):
-    number_creatures, amount_orders = input().split()
-    number_creatures_list.append(number_creatures)
+for n in range(5):
+    amount_orders = input(f'{ru.AMOUNT_1} {ru.CREATURES_AMOUNT[n]}')
     amount_orders_list.append(amount_orders)
 
 if int(amount_orders_list[4]) > 1:
@@ -19,27 +17,26 @@ if int(amount_orders_list[4]) > 1:
     amount_orders_list.insert(4, 1)
     amount_money = 0
     for s in range(len(cost_creature)):
-        amount_money += int(cost_creature[s]) * int(number_creatures_list[s])
-        mny_nmbr = amount_money
-        counter = 0
-        while mny_nmbr >= 25:
-            mny_nmbr = mny_nmbr - 25
-            counter = counter + 1
-        while mny_nmbr >= 10:
-            mny_nmbr = mny_nmbr - 10
-            counter = counter + 1
-        while mny_nmbr >= 5:
-            mny_nmbr = mny_nmbr - 5
-            counter = counter + 1
-        while mny_nmbr >= 1:
-            mny_nmbr = mny_nmbr - 1
-            counter = counter + 1
-            print(f'{ru.MONEY_FOR_ORDERS} {amount_money}')
-            print(f'{ru.MINIMAL_MONEY} {counter}')
+        amount_money += int(cost_creature[s]) * int(amount_orders_list[s])
+    mny_nmbr = amount_money
+    counter = 0
+    while mny_nmbr >= 25:
+        mny_nmbr = mny_nmbr - 25
+        counter = counter + 1
+    while mny_nmbr >= 10:
+        mny_nmbr = mny_nmbr - 10
+        counter = counter + 1
+    while mny_nmbr >= 5:
+        mny_nmbr = mny_nmbr - 5
+        counter = counter + 1
+    while mny_nmbr >= 1:
+        mny_nmbr = mny_nmbr - 1
+        counter = counter + 1
+
 else:
     amount_money = 0
     for s in range(len(cost_creature)):
-        amount_money += int(cost_creature[s]) * int(number_creatures_list[s])
+        amount_money += int(cost_creature[s]) * int(amount_orders_list[s])
         mny_nmbr = amount_money
         counter = 0
         while mny_nmbr >= 25:
@@ -54,22 +51,23 @@ else:
         while mny_nmbr >= 1:
             mny_nmbr = mny_nmbr - 1
             counter = counter + 1
-            print(f'{ru.MONEY_FOR_ORDERS} {amount_money}')
-            print(f'{ru.MINIMAL_MONEY} {counter}')
+
+print(f'{ru.MONEY_FOR_ORDERS} {amount_money}')
+print(f'{ru.MINIMAL_MONEY} {counter}')
 
 print(ru.ITEMS_1)
 number_items_1 = [1, 2, 3, 4]
 amount_orders_items_list = []
 
 for n in range(1, 5):
-    amount_orders_items_1 = input().split()
+    amount_orders_items_1 = int(input(f'{ru.AMOUNT_1} {ru.ITEMS_1_AMOUNT[n - 1]}'))
     amount_orders_items_list.append(amount_orders_items_1)
 
 print(ru.BLADE_CATEGORY)
 amount_orders_blade_list = []
 number_blade_list = [1, 2, 3, 4]
 for k in range(1, 5):
-    amount_orders_blade = int(input())
+    amount_orders_blade = int(input(f'{ru.AMOUNT_2} {ru.BLADE_AMOUNT[k - 1]}'))
     amount_orders_blade_list.append(amount_orders_blade)
 
 if sum(amount_orders_blade_list) > 1:
@@ -93,7 +91,7 @@ print(ru.DRINK_CATEGORY)
 amount_orders_drink_list = []
 number_drink_list = [1, 2, 3, 4]
 for k in range(1, 5):
-    amount_orders_drink = int(input())
+    amount_orders_drink = int(input(f'{ru.AMOUNT_3} {ru.DRINK_AMOUNT[k - 1]}'))
     amount_orders_drink_list.append(amount_orders_drink)
 cost_drink = 0
 
@@ -111,7 +109,7 @@ for number_drink, amount_orders_drink in zip(number_drink_list, amount_orders_dr
 print(ru.ITEMS_2)
 number_items_2 = [7, 8, 9]
 for n in range(7, 10):
-    amount_orders = input().split()
+    amount_orders = int(input(f'{ru.AMOUNT_4} {ru.ITEMS_2_AMOUNT[n - 8]}'))
     amount_orders_items_list.append(amount_orders)
 
 cost_items = [22, 100, 5, 1, 10, 30, 10]
@@ -129,10 +127,10 @@ for s in range(len(cost_items)):
 result = print(ru.QUOTE_2) if amount_money >= amnt_mny_itms else print(f'{ru.OFFENCE}, Деньги закончились на {phase})')
 
 
-def debt():
+def debt(amount_money, amnt_mny_itms):
     if amount_money >= amnt_mny_itms:
         return None
     return abs(amount_money - amnt_mny_itms)
 
 
-debt()
+print(f'Ваш долг: {debt(amount_money, amnt_mny_itms)}')
