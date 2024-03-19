@@ -91,7 +91,6 @@ for number_blade, amount_orders_blade in zip(number_blade_list, amount_orders_bl
         case _:
             print(ru.WARNING_2)
 
-
 print(ru.DRINK_CATEGORY)
 amount_orders_drink_list = []
 number_drink_list = []
@@ -112,7 +111,6 @@ for number_drink, amount_orders_drink in zip(number_drink_list, amount_orders_dr
         case 4:
             cost_drink += 400 * amount_orders_drink
 
-
 print(ru.ITEMS_2)
 for n in range(7, 10):
     number_items, amount_orders = input().split()
@@ -132,4 +130,13 @@ for s in range(len(cost_items)):
         amnt_mny_itms += int(cost_items[s]) * int(number_items_list[s])
     else:
         phase += 1
-result = print(ru.QUOTE_2) if amount_money >= amnt_mny_itms else print({ru.OFFENCE}, f'Деньги закончились на {phase})')
+result = print(ru.QUOTE_2) if amount_money >= amnt_mny_itms else print(f'{ru.OFFENCE}, Деньги закончились на {phase})')
+
+
+def debt():
+    if amount_money >= amnt_mny_itms:
+        return None
+    return abs(amount_money - amnt_mny_itms)
+
+
+debt()
