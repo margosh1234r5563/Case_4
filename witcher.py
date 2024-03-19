@@ -128,6 +128,7 @@ def main():
         if amount_money <= t_debt:
             return abs(amount_money - t_debt)
         return None
+
     print(f'Ваш долг: {debt(amount_money, t_debt)}')
 
     while amount_money > 0 and len(amnt_mny_itms) > 0:
@@ -136,7 +137,6 @@ def main():
         amnt_mny_itms.pop(0)
     print(ru.QUOTE_2) if amount_money >= sum(amnt_mny_itms) else print(
         f'{ru.OFFENCE}, Деньги закончились на {phase} покупке')
-
 
 
 if __name__ == '__main__':
