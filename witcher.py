@@ -112,25 +112,26 @@ def main():
         amount_orders = int(input(f'{ru.AMOUNT_4} {ru.ITEMS_2_AMOUNT[n - 7]}'))
         amount_orders_items_list.append(amount_orders)
 
-    cost_items = [22, 100, 5, 1, 10, 30, 10]
-
-    amnt_mny_itms = 0
+    a = int(cost_blade)
+    b = int(cost_drink)
     phase = 0
-    cost_items.insert(5, 1)
-    cost_items.insert(6, 1)
-    number_items_list = [1, 2, 3, 4, cost_blade, cost_drink, 7, 8, 9]
+    cost_items = [22, 100, 5, 1, 1, 1, 10, 30, 10]
+    amnt_mny_itms = [0] * len(cost_items)
+    number_items_list = [1, 2, 3, 4, a, b, 7, 8, 9]
     for s in range(len(cost_items)):
-        amnt_mny_itms += int(cost_items[s]) * int(number_items_list[s])
-        if amount_money < amnt_mny_itms:
-            break
-        phase += 1
+        amnt_mny_itms[s] = cost_items[s] * number_items_list[s]
 
-    print(ru.QUOTE_2) if amount_money >= amnt_mny_itms else print(f'{ru.OFFENCE}, Деньги закончились на {phase})')
+    for i in range(len(amnt_mny_itms)):
+        while amount_money >= 0:
+            amount_money -= amnt_mny_itms[i]
+            phase += 1
+
+    print(ru.QUOTE_2) if amount_money >= sum(amnt_mny_itms) else print(f'{ru.OFFENCE}, Деньги закончились на {phase}')
 
     def debt(amount_money, amnt_mny_itms):
-        if amount_money >= amnt_mny_itms:
+        if amount_money >= sum(amnt_mny_itms):
             return None
-        return abs(amount_money - amnt_mny_itms)
+        return abs(amount_money - sum(amnt_mny_itms))
 
     print(f'Ваш долг: {debt(amount_money, amnt_mny_itms)}')
 
