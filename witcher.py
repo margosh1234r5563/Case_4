@@ -122,7 +122,7 @@ for n in range(7, 10):
 cost_items = [22, 100, 5, 1, 10, 30, 10]
 
 amnt_mny_itms = 0
-phase = 1
+phase = 0
 cost_items.insert(5, 1)
 cost_items.insert(6, 1)
 number_items_list.insert(5, cost_blade)
@@ -132,5 +132,4 @@ for s in range(len(cost_items)):
         amnt_mny_itms += int(cost_items[s]) * int(number_items_list[s])
     else:
         phase += 1
-result = print(ru.QUOTE_2) if amount_money >= amnt_mny_itms else print({ru.OFFENCE},
-                                                                       f'Деньги закончились еще на {phase})')
+result = print(ru.QUOTE_2) if amount_money >= amnt_mny_itms else print({ru.OFFENCE}, f'Деньги закончились на {phase})')
