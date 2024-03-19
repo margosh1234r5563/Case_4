@@ -58,7 +58,6 @@ def main():
     print(f'{ru.MINIMAL_MONEY} {counter}')
 
     print(ru.ITEMS_1)
-    number_items_1 = [1, 2, 3, 4]
     amount_orders_items_list = []
 
     for n in range(1, 5):
@@ -109,9 +108,8 @@ def main():
                 cost_drink += 400 * amount_orders_drink
 
     print(ru.ITEMS_2)
-    number_items_2 = [7, 8, 9]
     for n in range(7, 10):
-        amount_orders = int(input(f'{ru.AMOUNT_4} {ru.ITEMS_2_AMOUNT[n - 8]}'))
+        amount_orders = int(input(f'{ru.AMOUNT_4} {ru.ITEMS_2_AMOUNT[n - 7]}'))
         amount_orders_items_list.append(amount_orders)
 
     cost_items = [22, 100, 5, 1, 10, 30, 10]
@@ -122,12 +120,12 @@ def main():
     cost_items.insert(6, 1)
     number_items_list = [1, 2, 3, 4, cost_blade, cost_drink, 7, 8, 9]
     for s in range(len(cost_items)):
-        while amount_money >= amnt_mny_itms:
-            amnt_mny_itms += int(cost_items[s]) * int(number_items_list[s])
-        else:
-            phase += 1
-    result = print(ru.QUOTE_2) if amount_money >= amnt_mny_itms else print(
-        f'{ru.OFFENCE}, Деньги закончились на {phase})')
+        amnt_mny_itms += int(cost_items[s]) * int(number_items_list[s])
+        if amount_money < amnt_mny_itms:
+            break
+        phase += 1
+
+    print(ru.QUOTE_2) if amount_money >= amnt_mny_itms else print(f'{ru.OFFENCE}, Деньги закончились на {phase})')
 
     def debt(amount_money, amnt_mny_itms):
         if amount_money >= amnt_mny_itms:
