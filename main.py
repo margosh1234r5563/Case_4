@@ -79,16 +79,16 @@ def main():
         print(ru.QUOTE_1)
     cost_blade = 0
 
-    for number_blade_list, amount_orders_blade_list in zip(number_blade_list, amount_orders_blade_list):
+    for number_blade, amount_orders_blade in zip(number_blade, amount_orders_blade):
         match number_blade:
             case 1:
-                cost_blade += 200 * amount_orders_blade_list
+                cost_blade += 200 * amount_orders_blade
             case 2:
-                cost_blade += 100 * amount_orders_blade_list
+                cost_blade += 100 * amount_orders_blade
             case 3:
-                cost_blade += 200 * amount_orders_blade_list
+                cost_blade += 200 * amount_orders_blade
             case 4:
-                cost_blade += 1500 * amount_orders_blade_list
+                cost_blade += 1500 * amount_orders_blade
             case _:
                 # Here we show the warning of trying to counterfeit the deal.
                 print(ru.WARNING_2)
