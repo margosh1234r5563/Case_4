@@ -79,8 +79,8 @@ def main():
         print(ru.QUOTE_1)
     cost_blade = 0
 
-    for number_blade, amount_orders_blade in zip(number_blade, amount_orders_blade):
-        match number_blade:
+    for number_blade_list, amount_orders_blade in zip(number_blade_list, amount_orders_blade):
+        match number_blade_list:
             case 1:
                 cost_blade += 200 * amount_orders_blade
             case 2:
