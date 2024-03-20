@@ -68,7 +68,7 @@ def main():
     # Here we show the variety of blades depending on the price.
     print(ru.BLADE_CATEGORY)
     amount_orders_blade_list = []
-    number_blade_list = [1, 2, 3, 4]
+    number_blade = [1, 2, 3, 4]
     for k in range(1, 5):
         # Here we write a quantity of a certain blade in the specified order.
         amount_orders_blade = int(input(f'{ru.AMOUNT_2} {ru.BLADE_AMOUNT[k - 1]}'))
